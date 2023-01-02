@@ -1,22 +1,26 @@
-<h2>Edit the book: {{title}}</h2>
+<h2>Edit the book: {{bookDetails.title}}</h2>
 
-<form action="/books/{{_id}}/edit" method="post">
+<form action="/books/{{bookDetails._id}}/edit" method="post">
     <label> Title:
-        <input type="text" name="title" value="{{title}}" />
+        <input type="text" name="title" value="{{bookDetails.title}}" />
     </label>
 
     <label> Author:
-        <input type="text" name="author" value="{{author}}" />
+        <select name="author">
+            {{#each authorsArr}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
     </label>
 
     <label> Description:
         <textarea name="description" cols="30" rows="4">
-        {{description}}
+        {{bookDetails.description}}
     </textarea>
     </label>
 
     <label> Rate:
-        <input type="number" name="rating" min="1" max="10" value="{{rating}}" />
+        <input type="number" name="rating" min="1" max="10" value="{{bookDetails.rating}}" />
     </label>
 
     <button>Save changes</button>

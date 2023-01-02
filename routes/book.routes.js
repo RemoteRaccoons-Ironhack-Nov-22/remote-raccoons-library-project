@@ -73,9 +73,22 @@ router.post("/books/create", (req, res, next) => {
 
 //UPDATE: display form
 router.get("/books/:bookId/edit", (req, res, next) => {
-    Book.findById(req.params.bookId)
+
+    let authorsArr;
+
+    Author.find()
+        .then( (authorsFromDB) => {
+            authorsArr = authorsFromDB;
+            return Book.findById(req.params.bookId)
+        })
         .then((bookDetails) => {
-            res.render("books/book-edit", bookDetails);
+
+            const data = {
+                bookDetails,
+                authorsArr
+            };
+
+            res.render("books/book-edit", data);
         })
         .catch(err => {
             console.log("Error getting book details from DB...", err);
