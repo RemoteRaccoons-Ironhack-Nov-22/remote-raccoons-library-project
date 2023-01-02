@@ -38,7 +38,14 @@ router.get("/books/:bookId", (req, res, next) => {
 
 //CREATE: display form
 router.get("/books/create", (req, res, next) => {
-    res.render("books/book-create");
+    Author.find()
+        .then((authorsArr) => {
+            res.render("books/book-create", { authorsArr });
+        })
+        .catch(err => {
+            console.log("error getting authors from DB", err);
+            next(err);
+        })
 });
 
 

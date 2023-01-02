@@ -1,12 +1,17 @@
 <h2>Create a book</h2>
 
+
 <form action="/books/create" method="post">
     <label> Title:
         <input type="text" name="title" />
     </label>
 
     <label> Author:
-        <input type="text" name="author" />
+        <select name="author">
+            {{#each authorsArr}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+        </select>
     </label>
 
     <label> Description:
