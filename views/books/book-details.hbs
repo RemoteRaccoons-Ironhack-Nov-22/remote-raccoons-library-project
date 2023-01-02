@@ -1,0 +1,20 @@
+<section class="book-details">
+    <h2>{{title}}</h2>
+    <p>
+        Author: {{author}} <br />
+        Rating: {{rating}} <br />
+    </p>
+    <p>
+        <strong>Description:</strong>
+        {{description}}
+    </p>
+
+    <p>
+        <form action="/books/{{_id}}/delete" method="POST">
+            <button>Delete</button>
+        </form>
+    </p>
+
+</section>
+
+<a href="/books">Back</a>
