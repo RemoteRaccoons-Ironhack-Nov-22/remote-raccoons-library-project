@@ -10,3 +10,9 @@ a {
 h1 {
   color: 15px;
 }
+
+header nav {
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #333;
+}
