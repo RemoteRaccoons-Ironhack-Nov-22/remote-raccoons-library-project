@@ -8,30 +8,11 @@ router.get("/books", (req, res, next) => {
     Book.find()
         .populate("author")
         .then(booksFromDB => {
-
-            console.log(booksFromDB)
-
             res.render("books/books-list", { books: booksFromDB })
         })
         .catch(err => {
             console.log("error getting books from DB", err);
-            next();
-        })
-});
-
-
-//READ: Book details
-router.get("/books/:bookId", (req, res, next) => {
-    const id = req.params.bookId;
-
-    Book.findById(id)
-        .populate("author")
-        .then(bookDetails => {
-            res.render("books/book-details", bookDetails);
-        })
-        .catch(err => {
-            console.log("error getting book details from DB", err);
-            next();
+            next(err);
         })
 });
 
@@ -68,6 +49,22 @@ router.post("/books/create", (req, res, next) => {
             next();
         })
 
+});
+
+
+//READ: Book details
+router.get("/books/:bookId", (req, res, next) => {
+    const id = req.params.bookId;
+
+    Book.findById(id)
+        .populate("author")
+        .then(bookDetails => {
+            res.render("books/book-details", bookDetails);
+        })
+        .catch(err => {
+            console.log("error getting book details from DB", err);
+            next(err);
+        })
 });
 
 
