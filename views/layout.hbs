@@ -20,11 +20,15 @@
          </div>
 
          <div>
-            <a href="/signup">Register</a> |
-            <a href="/login">Login</a> |
-            <form action="/logout" method="POST">
-               <button>Logout</button>
-            </form>
+            {{#if userDetails}}
+               Hello {{userDetails.email}}, 
+               <form action="/logout" method="POST">
+                  <button>Logout</button>
+               </form>
+            {{else}}
+               <a href="/signup">Register</a> |
+               <a href="/login">Login</a> |
+            {{/if}}
          </div>
       </nav>
    </header>
