@@ -73,11 +73,20 @@ router.post("/login", (req, res, next) => {
 });
 
 
+//User Profile
 router.get('/user-profile', (req, res) => {
     console.log(req.session.currentUser)
     res.render('users/user-profile', { userInSession: req.session.currentUser });
 });
 
+
+//LOGOUT
+router.post('/logout', (req, res, next) => {
+    req.session.destroy(err => {
+        if (err) next(err);
+        res.redirect('/');
+    });
+});
 
 
 module.exports = router;

@@ -13,16 +13,19 @@
 
    <header>
       <nav>
-         <p>
+         <div>
             <a href="/authors">Authors</a> |
             <a href="/books">Books</a> |
             <a href="/books/create">Create new book</a>
-         </p>
+         </div>
 
-         <p>
+         <div>
             <a href="/signup">Register</a> |
-            <a href="/login">Login</a>
-         </p>
+            <a href="/login">Login</a> |
+            <form action="/logout" method="POST">
+               <button>Logout</button>
+            </form>
+         </div>
       </nav>
    </header>
 
