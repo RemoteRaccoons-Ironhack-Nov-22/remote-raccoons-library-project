@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Book = require('../models/Book.model');
 const Author = require('../models/Author.model');
 
-const MONGO_URI = process.env.MONGODB_URI || 'mongodb://localhost/library-project';
+const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/library-project';
 
 mongoose
   .connect(MONGO_URI)
